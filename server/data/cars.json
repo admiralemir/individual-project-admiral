@@ -1,0 +1,92 @@
+[
+  {
+    "brand": "Toyota",
+    "imageUrl": "https://imgcdn.oto.com/large/gallery/color/38/1654/toyota-avanza-color-523617.jpg",
+    "plateNumber": "B 1234 ABC",
+    "model": "Avanza",
+    "color": "Black",
+    "year": 2021,
+    "status": "Available"
+  },
+  {
+    "brand": "Toyota",
+    "imageUrl": "https://imgcdn.oto.com/large/gallery/color/38/1240/toyota-kijang-innova-color-176061.jpg",
+    "plateNumber": "B 5678 DEF",
+    "model": "Innova",
+    "color": "Silver",
+    "year": 2022,
+    "status": "Borrowed"
+  },
+  {
+    "brand": "Honda",
+    "imageUrl": "https://imgcdn.oto.com/large/gallery/color/14/1995/honda-brio-color-131688.jpg",
+    "plateNumber": "B 9012 GHI",
+    "model": "Brio",
+    "color": "Black",
+    "year": 2020,
+    "status": "Available"
+  },
+  {
+    "brand": "Honda",
+    "imageUrl": "https://imgcdn.oto.com/large/gallery/color/14/2435/honda-hr-v-color-588166.jpg",
+    "plateNumber": "B 3456 JKL",
+    "model": "HR-V",
+    "color": "White",
+    "year": 2023,
+    "status": "Maintenance"
+  },
+  {
+    "brand": "Mitsubishi",
+    "imageUrl": "https://imgcdn.oto.com/large/gallery/exterior/28/1635/mitsubishi-xpander-17705.jpg",
+    "plateNumber": "B 7890 MNO",
+    "model": "Xpander",
+    "color": "Gray",
+    "year": 2021,
+    "status": "Available"
+  },
+  {
+    "brand": "Mitsubishi",
+    "imageUrl": "https://images.bisnis.com/posts/2021/01/12/1341911/pajero-sport-dakar-ultimate-4x2.jpg",
+    "plateNumber": "B 1122 PQR",
+    "model": "Pajero Sport",
+    "color": "Black",
+    "year": 2022,
+    "status": "Borrowed"
+  },
+  {
+    "brand": "Suzuki",
+    "imageUrl": "https://res.cloudinary.com/mufautoshow/image/upload/f_auto,f_auto/w_1200/v1608086372/moas/news/1601579312_review-suzuki-ertiga-spesifikasi-harga-kredit-dan-cash.jpg",
+    "plateNumber": "B 3344 STU",
+    "model": "Ertiga",
+    "color": "White",
+    "year": 2020,
+    "status": "Available"
+  },
+  {
+    "brand": "Suzuki",
+    "imageUrl": "https://www.suzukipusatkaltimtara.com/file/xl7hybrid-01.jpg",
+    "plateNumber": "B 5566 VWX",
+    "model": "XL7",
+    "color": "Brown",
+    "year": 2021,
+    "status": "Maintenance"
+  },
+  {
+    "brand": "Daihatsu",
+    "imageUrl": "https://imgcdn.oto.com/large/gallery/color/7/1669/daihatsu-terios-color-227807.jpg",
+    "plateNumber": "B 7788 YZA",
+    "model": "Terios",
+    "color": "Silver",
+    "year": 2022,
+    "status": "Available"
+  },
+  {
+    "brand": "Daihatsu",
+    "imageUrl": "https://www.toyotaqatar.com/myassets/uploads/images/Vehicles/Rush/Colors/Black-Metallic.jpg",
+    "plateNumber": "B 9900 BCD",
+    "model": "Rush",
+    "color": "Black",
+    "year": 2023,
+    "status": "Borrowed"
+  }
+]
