@@ -44,7 +44,7 @@ module.exports = class CarController {
                 throw { name: 'NotFound', message: 'Car not found' }
             }
 
-            // Generate AI insights using Gemini
+            // Generate AI menggunakan google genai
             const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-exp' })
             
             const prompt = `Berikan insights singkat dan informatif tentang mobil berikut dalam bahasa Indonesia:
