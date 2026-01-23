@@ -5,15 +5,23 @@ module.exports = class FormController{
     static async createForm(req, res, next) {
         try {
             const userId = req.user.id;
-            const { carId, borrowDate, returnDate } = req.body;
+            const { carId, borrowDate, returnDate, purpose, destination } = req.body;
 
-            // Cek ketersediaan mobil
-            const car = await Car.findByPk(carId);
-            if (!car) {
-                throw { name: 'NotFound', message: 'Car not found' };
+            // Validasi input PERTAMA (sebelum query ke database)
+            if (!carId) {
+                throw { name: 'BadRequest', message: 'Car ID is required' };
             }
-            if (car.status !== 'Available') {
-                throw { name: 'Conflict', message: 'Car is not available for borrowing' };
+            if (!borrowDate) {
+                throw { name: 'BadRequest', message: 'Borrow date is required' };
+            }
+            if (!returnDate) {
+                throw { name: 'BadRequest', message: 'Return date is required' };
+            }
+            if (!purpose) {
+                throw { name: 'BadRequest', message: 'Purpose is required' };
+            }
+            if (!destination) {
+                throw { name: 'BadRequest', message: 'Destination is required' };
             }
 
             // Cek apakah tanggal peminjaman valid
@@ -26,19 +34,30 @@ module.exports = class FormController{
             if (returnD <= borrow) {
                 throw { name: 'BadRequest', message: 'Return date must be after borrow date' };
             }
+
+            // Cek ketersediaan mobil
+            const car = await Car.findByPk(carId);
+            if (!car) {
+                throw { name: 'NotFound', message: 'Car not found' };
+            }
+            if (car.status !== 'Available') {
+                throw { name: 'Conflict', message: 'Car is not available for borrowing' };
+            }
+
             // Buat form peminjaman
             const form = await Form.create({
                 userId,
                 carId,
                 borrowDate,
                 returnDate,
+                purpose,
+                destination,
                 status: 'Pending'
             });
             res.status(201).json(form);
 
         } catch (error) {
             console.log(error);
-            
             next(error);
         }
     }
