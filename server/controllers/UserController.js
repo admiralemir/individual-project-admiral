@@ -1,4 +1,3 @@
-const { where } = require('sequelize');
 const { comparePassword } = require('../helpers/bcrypt');
 const { signToken } = require('../helpers/jwt');
 const cloudinary = require('cloudinary').v2
@@ -77,7 +76,7 @@ module.exports = class UserController {
                     email: gPayload.email
                 },
                 defaults: {
-                    fullName: gPayload.name,
+                    email: gPayload.email,
                     password: "google_password"
                 }
             })
@@ -87,7 +86,7 @@ module.exports = class UserController {
                 email: user.email
             }
 
-            const access_token = createToken(payload);
+            const access_token = signToken(payload);
 
             res.json({ access_token });
         } catch (error) {

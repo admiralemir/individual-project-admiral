@@ -35,6 +35,14 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false
       },
+      purpose: {
+        type: Sequelize.TEXT,
+        allowNull: false
+      },
+      destination: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
       status: {
         type: Sequelize.STRING,
         defaultValue: 'Pending'

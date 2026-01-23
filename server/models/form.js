@@ -70,6 +70,22 @@ module.exports = (sequelize, DataTypes) => {
         isDate: { msg: 'Return date must be a valid date' }
       }
     },
+    purpose: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        notNull: { msg: 'Purpose is required' },
+        notEmpty: { msg: 'Purpose should not be empty' }
+      }
+    },
+    destination: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { msg: 'Destination is required' },
+        notEmpty: { msg: 'Destination should not be empty' }
+      }
+    },
     status: {
       type: DataTypes.STRING,
       defaultValue: 'Pending'
