@@ -61,6 +61,7 @@ module.exports = class CarController {
             Jawab dengan singkat dan padat.`
 
             const result = await model.generateContent(prompt)
+            console.log(result, '<<<<< INSIGHTS RESULT');
             const insights = result.text
 
             res.json({
@@ -75,6 +76,7 @@ module.exports = class CarController {
             })
             
         } catch (error) {
+            console.log(error, '<<<<< INSIGHTS ERROR');
             next(error)
         }
     }
