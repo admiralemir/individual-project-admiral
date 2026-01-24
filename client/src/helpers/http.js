@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const http = axios.create({
-  baseURL: 'https://hck-091.admiral-emir.web.id/'
+  baseURL: 'https://hck-091.admiral-emir.web.id'
 });
 
 // Interceptor untuk menambahkan token ke setiap request
