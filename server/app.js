@@ -8,7 +8,7 @@ const routes = require('./routes');
 const cors = require('cors');
 
 app.use(cors({
-  origin: 'http://localhost:5173', // Port default Vite
+  origin: 'https://individual-project-fe640.web.app',
   credentials: true
 }));
 

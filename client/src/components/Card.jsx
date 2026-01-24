@@ -17,19 +17,29 @@ export default function Card({ car, onClick }) {
     };
 
     const handleGetInsights = async (e) => {
-        e.stopPropagation(); // Prevent card onClick
+        e.stopPropagation();
+        
+        console.log('BEFORE IF showInsight');
         
         if (showInsights) {
             setShowInsights(false);
             return;
         }
 
+        console.log('AFTER IF showInsight');
+
+        console.log('BEFORE LOADING INSIGHT');
+        
         try {
             setLoadingInsights(true);
+
+            console.log('BEFORE RESPONSE');
+            
             const response = await http({
                 method: 'GET',
                 url: `/cars/${car.id}/insights`
             });
+            console.log('AFTER RESPONSE', response);
             
             setInsights(response.data.insights);
             setShowInsights(true);
@@ -39,6 +49,9 @@ export default function Card({ car, onClick }) {
         } finally {
             setLoadingInsights(false);
         }
+        
+        console.log('AFTER LOADING INSIGHT');
+        
     };
 
     return (
