@@ -1,9 +1,7 @@
 const { Car } = require('../models')
 const { Op } = require('sequelize')
-const { GoogleGenAI } = require('@google/genai')
-const genAI = new GoogleGenAI({ 
-    apiKey: 'AIzaSyAE5_vfAhdNUMFjM2eQvXLudxHpY4cQazw'
-})
+const { GoogleGenerativeAI } = require('@google/generative-ai')
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY)
 
 module.exports = class CarController {
     static async listCars(req, res, next) {
@@ -13,9 +11,9 @@ module.exports = class CarController {
 
             if (search) {
                 whereClause[Op.or] = [
-                    { brand: { [Op.iLike]: `%${search}%`} },
-                    { model: { [Op.iLike]: `%${search}%`} },
-                    { color: { [Op.iLike]: `%${search}%`} }
+                    { brand: { [Op.iLike]: `%${search}%` } },
+                    { model: { [Op.iLike]: `%${search}%` } },
+                    { color: { [Op.iLike]: `%${search}%` } }
                 ]
             }
             if (status) {
@@ -23,13 +21,13 @@ module.exports = class CarController {
             }
 
             const cars = await Car.findAll(
-                { 
+                {
                     where: whereClause,
                     order: [['id', 'ASC']]
                 }
             )
             res.json(cars)
-            
+
         } catch (error) {
             next(error);
         }
@@ -39,14 +37,13 @@ module.exports = class CarController {
         try {
             const carId = req.params.id
             const car = await Car.findByPk(carId)
-            
+
             if (!car) {
                 throw { name: 'NotFound', message: 'Car not found' }
             }
 
-            // Generate AI menggunakan google genai
-            const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-exp' })
-            
+            const model = genAI.getGenerativeModel({ model: 'gemini-3-flash-preview' })
+
             const prompt = `Berikan insights singkat dan informatif tentang mobil berikut dalam bahasa Indonesia:
             - Merek: ${car.brand}
             - Model: ${car.model}
@@ -60,9 +57,11 @@ module.exports = class CarController {
             
             Jawab dengan singkat dan padat.`
 
-            const result = await model.generateContent(prompt)
+            const result = await model.generateContent(prompt);
+    
             console.log(result, '<<<<< INSIGHTS RESULT');
-            const insights = result.text
+            const response = await result.response
+            const insights = response.text()
 
             res.json({
                 carId: car.id,
@@ -74,7 +73,7 @@ module.exports = class CarController {
                 },
                 insights
             })
-            
+
         } catch (error) {
             console.log(error, '<<<<< INSIGHTS ERROR');
             next(error)
