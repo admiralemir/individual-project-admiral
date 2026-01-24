@@ -34,7 +34,6 @@ export default function Login() {
     }
 
     useEffect(() => {
-        // Load Google Sign-In script
         const script = document.createElement("script")
         script.src = "https://accounts.google.com/gsi/client"
         script.async = true
