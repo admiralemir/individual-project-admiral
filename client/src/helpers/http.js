@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const http = axios.create({
-  baseURL: 'https://hck-091.admiral-emir.web.id'
+  baseURL: 'http://localhost:3000' 
 });
 
 http.interceptors.request.use(

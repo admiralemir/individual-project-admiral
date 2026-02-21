@@ -86,7 +86,7 @@ export default function SubmittedForm() {
                     <p className="text-muted mb-4">Anda belum pernah mengajukan peminjaman mobil</p>
                     <button
                         className="btn btn-primary"
-                        onClick={() => navigate('/borrowing-form')}
+                        onClick={() => navigate('/form-create')}
                     >
                         <i className="bi bi-plus-circle me-2"></i>
                         Ajukan Peminjaman Sekarang

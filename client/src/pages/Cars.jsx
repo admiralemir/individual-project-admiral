@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import showError from '../helpers/error'
 import http from '../helpers/http'
 import Card from '../components/Card'
-import Button from '../components/Button'
 
 export default function Cars(props) {
     const [loading, setLoading] = useState(false)
@@ -74,7 +73,6 @@ export default function Cars(props) {
                     >
                         <option value="">All Status</option>
                         <option value="Available">Available</option>
-                        <option value="Unavailable">Unavailable</option>
                     </select>
                 </div>
                 <div className="col-md-2">

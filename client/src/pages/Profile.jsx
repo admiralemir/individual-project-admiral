@@ -1,4 +1,3 @@
-// Membuat page profile
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import http from '../helpers/http'
@@ -71,7 +70,7 @@ export default function Profile() {
                 url: '/profile',
                 data: form
             });
-            
+
             alert('Profile updated successfully!');
             setEditMode(false);
             fetchProfile();
@@ -81,7 +80,7 @@ export default function Profile() {
             setLoading(false);
         }
     };
-    
+
     const handleUpdateImage = async () => {
         if (!selectedImage) {
             alert('Please select an image first');
@@ -126,249 +125,260 @@ export default function Profile() {
             </>
         );
     }
+    const infoItem = ({ label, value }) => (
+        <div>
+            <small className="text-white-50 d-block">{label}</small>
+            <strong>{value || '-'}</strong>
+        </div>
+    )
 
     return (
         <>
-            <NavbarHome />
-            <div className="container my-5">
-                <div className="row justify-content-center">
-                    <div className="col-lg-10">
-                        
-                        <div className="d-flex justify-content-between align-items-center mb-4">
-                            <h2 className="mb-0">
-                                <i className="bi bi-person-circle me-2 text-success"></i>
-                                My Profile
-                            </h2>
-                            <button 
-                                className="btn btn-outline-secondary"
-                                onClick={() => navigate('/')}
-                            >
-                                <i className="bi bi-arrow-left me-2"></i>
-                                Back to Home
-                            </button>
-                        </div>
+            <div
+                style={{
+                    minHeight: "100vh",
+                    background: "linear-gradient(180deg, #0f2027 0%, #203a43 50%, #2c5364 100%)",
+                    paddingTop: "120px",
+                    paddingBottom: "80px"
+                }}
+            >
 
-                        <div className="row g-4">
-                        
-                            <div className="col-md-4">
-                                <div className="card shadow-sm border-0">
-                                    <div className="card-body text-center p-4">
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <div className="col-lg-10">
+
+                            {/* Header */}
+                            <div className="d-flex justify-content-between align-items-center mb-5 text-white">
+                                <h2 className="mb-0 fw-bold" style={{ letterSpacing: "1px" }}>
+                                    My Profile
+                                </h2>
+                                <button
+                                    className="btn btn-outline-light btn-sm"
+                                    onClick={() => navigate('/')}
+                                >
+                                    <i className="bi bi-arrow-left me-2"></i>
+                                    Back to Home
+                                </button>
+                            </div>
+
+                            <div className="row g-5">
+
+                                {/* LEFT CARD */}
+                                <div className="col-md-4">
+                                    <div className="glass-card text-center p-4">
+
                                         <div className="mb-4">
-                                            <div 
-                                                className="rounded-circle mx-auto mb-3 overflow-hidden border border-3 border-success"
-                                                style={{ width: '180px', height: '180px' }}
-                                            >
+                                            <div className="profile-circle">
                                                 {imagePreview ? (
-                                                    <img 
-                                                        src={imagePreview} 
-                                                        alt="Preview"
-                                                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                                    />
+                                                    <img src={imagePreview} alt="Preview" />
                                                 ) : profile?.imageProfile ? (
-                                                    <img 
-                                                        src={profile.imageProfile} 
-                                                        alt="Profile"
-                                                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                                                    />
+                                                    <img src={profile.imageProfile} alt="Profile" />
                                                 ) : (
-                                                    <div 
-                                                        className="bg-success d-flex align-items-center justify-content-center"
-                                                        style={{ width: '100%', height: '100%' }}
-                                                    >
-                                                        <i className="bi bi-person-fill text-white" style={{ fontSize: '5rem' }}></i>
+                                                    <div className="profile-placeholder">
+                                                        <i className="bi bi-person-fill"></i>
                                                     </div>
                                                 )}
                                             </div>
-                                
-                                            <div className="mb-2">
-                                                <label htmlFor="imageUpload" className="btn btn-sm btn-outline-success">
+
+                                            <div className="mt-3">
+                                                <label htmlFor="imageUpload" className="btn btn-outline-light btn-sm w-100">
                                                     <i className="bi bi-camera me-2"></i>
                                                     Change Photo
                                                 </label>
-                                                <input 
-                                                    type="file" 
+                                                <input
+                                                    type="file"
                                                     id="imageUpload"
                                                     className="d-none"
                                                     accept="image/*"
                                                     onChange={handleImageChange}
                                                 />
                                             </div>
-                                            
+
                                             {selectedImage && (
-                                                <button 
-                                                    className="btn btn-success btn-sm w-100"
+                                                <button
+                                                    className="btn btn-primary btn-sm w-100 mt-2"
                                                     onClick={handleUpdateImage}
                                                     disabled={loading}
                                                 >
-                                                    <i className="bi bi-upload me-2"></i>
                                                     Upload Photo
                                                 </button>
                                             )}
                                         </div>
 
-                                        <h4 className="mb-1">{profile?.fullName || 'No Name'}</h4>
-                                        <p className="text-muted mb-2">{profile?.email}</p>
-                                        <span className={`badge ${profile?.role === 'Admin' ? 'bg-danger' : 'bg-success'}`}>
+                                        <h4 className="text-white">{profile?.fullName || 'No Name'}</h4>
+                                        <p className="text-white-50">{profile?.email}</p>
+
+                                        <span className={`badge ${profile?.role === 'Admin' ? 'bg-danger' : 'bg-primary'}`}>
                                             {profile?.role}
                                         </span>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div className="col-md-8">
-                                <div className="card shadow-sm border-0">
-                                    <div className="card-header bg-white d-flex justify-content-between align-items-center">
-                                        <h5 className="mb-0">Profile Information</h5>
+
+                                {/* RIGHT CARD */}
+                                <div className="col-md-8">
+                                    <div className="glass-card p-4">
+
+                                        <div className="d-flex justify-content-between align-items-center mb-4">
+                                            <h5 className="text-white mb-0">Profile Information</h5>
+
+                                            {!editMode ? (
+                                                <button
+                                                    className="btn btn-primary btn-sm"
+                                                    onClick={() => setEditMode(true)}
+                                                >
+                                                    Edit Profile
+                                                </button>
+                                            ) : (
+                                                <button
+                                                    className="btn btn-outline-light btn-sm"
+                                                    onClick={() => {
+                                                        setEditMode(false);
+                                                        setForm({
+                                                            fullName: profile?.fullName || '',
+                                                            phoneNumber: profile?.phoneNumber || '',
+                                                            departementId: profile?.departementId || ''
+                                                        });
+                                                    }}
+                                                >
+                                                    Cancel
+                                                </button>
+                                            )}
+                                        </div>
+
                                         {!editMode ? (
-                                            <button 
-                                                className="btn btn-success btn-sm"
-                                                onClick={() => setEditMode(true)}
-                                            >
-                                                <i className="bi bi-pencil me-2"></i>
-                                                Edit Profile
-                                            </button>
-                                        ) : (
-                                            <button 
-                                                className="btn btn-outline-secondary btn-sm"
-                                                onClick={() => {
-                                                    setEditMode(false);
-                                                    setForm({
-                                                        fullName: profile?.fullName || '',
-                                                        phoneNumber: profile?.phoneNumber || '',
-                                                        departementId: profile?.departementId || ''
-                                                    });
-                                                }}
-                                            >
-                                                <i className="bi bi-x-circle me-2"></i>
-                                                Cancel
-                                            </button>
-                                        )}
-                                    </div>
-                                    <div className="card-body p-4">
-                                        {!editMode ? (
-                                            
-                                            <div className="row g-3">
-                                                <div className="col-12">
-                                                    <div className="p-3 bg-light rounded">
-                                                        <small className="text-muted d-block mb-1">
-                                                            <i className="bi bi-person me-2"></i>Full Name
-                                                        </small>
-                                                        <strong>{profile?.fullName || '-'}</strong>
-                                                    </div>
-                                                </div>
-                                                <div className="col-12">
-                                                    <div className="p-3 bg-light rounded">
-                                                        <small className="text-muted d-block mb-1">
-                                                            <i className="bi bi-envelope me-2"></i>Email
-                                                        </small>
-                                                        <strong>{profile?.email || '-'}</strong>
-                                                    </div>
-                                                </div>
-                                                <div className="col-12">
-                                                    <div className="p-3 bg-light rounded">
-                                                        <small className="text-muted d-block mb-1">
-                                                            <i className="bi bi-telephone me-2"></i>Phone Number
-                                                        </small>
-                                                        <strong>{profile?.phoneNumber || '-'}</strong>
-                                                    </div>
-                                                </div>
-                                                <div className="col-12">
-                                                    <div className="p-3 bg-light rounded">
-                                                        <small className="text-muted d-block mb-1">
-                                                            <i className="bi bi-building me-2"></i>Department
-                                                        </small>
-                                                        <strong>{profile?.Departement?.departementName || '-'}</strong>
-                                                    </div>
-                                                </div>
-                                                <div className="col-12">
-                                                    <div className="p-3 bg-light rounded">
-                                                        <small className="text-muted d-block mb-1">
-                                                            <i className="bi bi-shield-check me-2"></i>Role
-                                                        </small>
-                                                        <strong>{profile?.role || '-'}</strong>
-                                                    </div>
-                                                </div>
+                                            <div className="info-box">
+                                                <infoItem label="Full Name" value={profile?.fullName} />
+                                                <infoItem label="Email" value={profile?.email} />
+                                                <infoItem label="Phone Number" value={profile?.phoneNumber} />
+                                                <infoItem label="Department" value={profile?.Departement?.departementName} />
+                                                <infoItem label="Role" value={profile?.role} />
                                             </div>
                                         ) : (
-                           
-                                            <form onSubmit={handleUpdateProfile}>
+                                            <form onSubmit={handleUpdateProfile} className="text-white">
+
                                                 <div className="mb-3">
-                                                    <label className="form-label fw-semibold">
-                                                        <i className="bi bi-person me-2"></i>Full Name
-                                                    </label>
-                                                    <input 
+                                                    <label className="form-label">Full Name</label>
+                                                    <input
                                                         type="text"
-                                                        className="form-control"
+                                                        className="form-control custom-input"
                                                         name="fullName"
                                                         value={form.fullName}
                                                         onChange={handleChange}
-                                                        required
                                                     />
                                                 </div>
+
                                                 <div className="mb-3">
-                                                    <label className="form-label fw-semibold">
-                                                        <i className="bi bi-envelope me-2"></i>Email
-                                                    </label>
-                                                    <input 
+                                                    <label className="form-label">Email</label>
+                                                    <input
                                                         type="email"
-                                                        className="form-control"
+                                                        className="form-control custom-input"
                                                         value={profile?.email}
                                                         disabled
                                                     />
-                                                    <small className="text-muted">Email cannot be changed</small>
                                                 </div>
+
                                                 <div className="mb-3">
-                                                    <label className="form-label fw-semibold">
-                                                        <i className="bi bi-telephone me-2"></i>Phone Number
-                                                    </label>
-                                                    <input 
+                                                    <label className="form-label">Phone Number</label>
+                                                    <input
                                                         type="text"
-                                                        className="form-control"
+                                                        className="form-control custom-input"
                                                         name="phoneNumber"
                                                         value={form.phoneNumber}
                                                         onChange={handleChange}
-                                                        placeholder="Enter phone number"
                                                     />
                                                 </div>
+
                                                 <div className="mb-4">
-                                                    <label className="form-label fw-semibold">
-                                                        <i className="bi bi-building me-2"></i>Department ID
-                                                    </label>
-                                                    <input 
+                                                    <label className="form-label">Department ID</label>
+                                                    <input
                                                         type="number"
-                                                        className="form-control"
+                                                        className="form-control custom-input"
                                                         name="departementId"
                                                         value={form.departementId}
                                                         onChange={handleChange}
-                                                        placeholder="Enter department ID"
                                                     />
                                                 </div>
-                                                <button 
+
+                                                <button
                                                     type="submit"
-                                                    className="btn btn-success w-100"
+                                                    className="btn btn-primary w-100"
                                                     disabled={loading}
                                                 >
-                                                    {loading ? (
-                                                        <>
-                                                            <span className="spinner-border spinner-border-sm me-2"></span>
-                                                            Updating...
-                                                        </>
-                                                    ) : (
-                                                        <>
-                                                            <i className="bi bi-check-circle me-2"></i>
-                                                            Save Changes
-                                                        </>
-                                                    )}
+                                                    Save Changes
                                                 </button>
+
                                             </form>
                                         )}
+
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
+
+
+            {/* ================= STYLING ================= */}
+            <style>{`
+
+.glass-card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.profile-circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    border: 3px solid rgba(255,255,255,0.2);
+}
+
+.profile-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-placeholder {
+    background: linear-gradient(135deg, #203a43, #2c5364);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    color: white;
+}
+
+.info-box div {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    color: white;
+}
+
+.custom-input {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: white;
+}
+
+.custom-input:focus {
+    background: rgba(255,255,255,0.12);
+    border-color: #2c5364;
+    box-shadow: none;
+    color: white;
+}
+
+`}</style>
         </>
     );
 }

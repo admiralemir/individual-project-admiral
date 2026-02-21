@@ -11,10 +11,9 @@ export default function Login() {
     const navigate = useNavigate()
 
     if (localStorage.getItem('access_token')) {
-        return <Navigate to='/' /> // Perbaikan: gunakan <Navigate> bukan navigate()
+        return <Navigate to='/' />
     }
 
-    // Handle Google Login Response
     async function handleGoogleLoginResponse(res) {
         try {
             const response = await http({

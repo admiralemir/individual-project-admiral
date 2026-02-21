@@ -24,7 +24,7 @@ function App() {
         <Route path='/form-create' element={<BorrowingForm />} />
         <Route element={<CarLayout />}>
           <Route path="/cars" element={<Cars />} />
-        </Route>
+        </Route>  
       </Routes>
     </BrowserRouter>
   )
