@@ -1,0 +1,119 @@
+.car-card {
+  background: linear-gradient(145deg, #f0f7ff, #ffffff);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 80, 200, 0.08);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid rgba(0, 119, 255, 0.08);
+}
+
+.car-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 80, 200, 0.15);
+}
+
+.car-image-wrapper {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.car-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.car-card:hover .car-image {
+  transform: scale(1.08);
+}
+
+/* STATUS BADGE */
+.status-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 6px 12px;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  backdrop-filter: blur(6px);
+}
+
+/* STATUS COLORS */
+.status-badge.Available {
+  background: #0d6efd;
+}
+
+.status-badge.Borrowed {
+  background: #ffc107;
+  color: #000;
+}
+
+.status-badge.Maintenance {
+  background: #dc3545;
+}
+
+/* BODY */
+.car-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.brand-badge {
+  background: linear-gradient(90deg, #0d6efd, #4dabf7);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  align-self: flex-start;
+}
+
+.car-title {
+  font-weight: 600;
+  color: #0b3d91;
+}
+
+.car-year {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-left: 8px;
+}
+
+.car-info {
+  font-size: 0.9rem;
+  color: #495057;
+  margin-bottom: 10px;
+}
+
+/* BUTTON */
+.insight-btn {
+  background: linear-gradient(90deg, #0d6efd, #4dabf7);
+  border: none;
+  padding: 10px;
+  border-radius: 12px;
+  color: white;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.insight-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
+}
+
+/* INSIGHT BOX */
+.insight-box {
+  background: rgba(13, 110, 253, 0.08);
+  border-left: 4px solid #0d6efd;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  margin-top: 10px;
+  white-space: pre-line;
+}

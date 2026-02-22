@@ -43,17 +43,22 @@ export default function Register(props) {
       className="d-flex align-items-center justify-content-center"
       style={{
         minHeight: "100vh",
-        background: "linear-gradient(135deg, #f8f9fa, #e9ecef)"
+        background: "linear-gradient(180deg, #0f2027 0%, #203a43 50%, #2c5364 100%)"
       }}
     >
       <div
-        className="bg-white rounded-4 shadow p-5"
-        style={{ width: "480px" }}
+        className="rounded-4 shadow p-5 text-white"
+        style={{
+          width: "480px",
+          background: 'rgba(255,255,255,0.1)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(255,255,255,0.2)'
+        }}
       >
         <h2 className="fw-bold mb-2 text-center">
           Create Your Account
         </h2>
-        <p className="text-center text-muted mb-4">
+        <p className="text-center mb-4" style={{ opacity: 0.8 }}>
           Internal Car Borrowing System
         </p>
 
@@ -68,6 +73,11 @@ export default function Register(props) {
               className="form-control form-control-lg"
               placeholder="Enter your full name"
               value={form.fullName}
+              style={{
+                background: 'rgba(255,255,255,0.15)',
+                border: '1px solid rgba(255,255,255,0.3)',
+                color: 'white'
+              }}
             />
           </div>
 
@@ -81,6 +91,11 @@ export default function Register(props) {
               className="form-control form-control-lg"
               placeholder="Enter your email"
               value={form.email}
+              style={{
+                background: 'rgba(255,255,255,0.15)',
+                border: '1px solid rgba(255,255,255,0.3)',
+                color: 'white'
+              }}
             />
           </div>
 
@@ -94,6 +109,11 @@ export default function Register(props) {
               className="form-control form-control-lg"
               placeholder="Enter your password"
               value={form.password}
+              style={{
+                background: 'rgba(255,255,255,0.15)',
+                border: '1px solid rgba(255,255,255,0.3)',
+                color: 'white'
+              }}
             />
           </div>
 
@@ -103,12 +123,13 @@ export default function Register(props) {
         </form>
 
         <div className="text-center mt-4">
-          <span className="text-muted">
+          <span style={{ opacity: 0.8 }}>
             Already have an account?
           </span>{" "}
           <a
             href="/login"
-            className="fw-semibold text-primary text-decoration-none"
+            className="fw-semibold text-decoration-none"
+            style={{ color: '#5dade2' }}
           >
             Login
           </a>
