@@ -1,5 +1,5 @@
-import NavbarCar from "./NavbarCar";
 import { Outlet, Navigate } from "react-router";
+import NavbarHome from "./NavbarHome";
 
 export default function CarLayout() {
     if (!localStorage.getItem('access_token')) {
@@ -8,7 +8,7 @@ export default function CarLayout() {
 
     return(
         <div>
-            <NavbarCar />
+            <NavbarHome />
             <Outlet />
         </div>
     )
