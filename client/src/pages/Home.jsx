@@ -152,7 +152,7 @@ export default function Home() {
                 >
                     <div className="container">
                         <p className="mb-0 opacity-75">
-                            All Rights Reserved © HackEmployee
+                            All Rights Reserved © Geneva Employee
                         </p>
                     </div>
                 </footer>
