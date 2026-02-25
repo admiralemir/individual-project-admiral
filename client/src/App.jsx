@@ -19,12 +19,12 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route element={<HomeLayout />}>
           <Route path='/' element={<Home />} />
-          <Route path='/submitted' element={<SubmittedForm />} />
         </Route>
+        <Route path='/submitted' element={<SubmittedForm />} />
         <Route path='/form-create' element={<BorrowingForm />} />
         <Route element={<CarLayout />}>
           <Route path="/cars" element={<Cars />} />
-        </Route>  
+        </Route>
       </Routes>
     </BrowserRouter>
   )
