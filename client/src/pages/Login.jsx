@@ -26,6 +26,7 @@ export default function Login() {
 
             const data = response.data
             localStorage.setItem('access_token', data.access_token)
+            localStorage.setItem('fullName', data.fullName)
             navigate('/')
         } catch (error) {
             showError(error)
@@ -102,6 +103,7 @@ export default function Login() {
                             })
 
                             localStorage.setItem('access_token', data.access_token)
+                            localStorage.setItem('fullName', data.fullName)
                             navigate('/')
                         } catch (error) {
                             showError(error)

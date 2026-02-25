@@ -49,7 +49,10 @@ module.exports = class UserController {
                 email: user.email
             })
             
-            res.json({ access_token });
+            res.json({ 
+                access_token,
+                fullName: user.fullName 
+            });
 
         } catch (error) {;
             next(error);
@@ -77,6 +80,7 @@ module.exports = class UserController {
                 },
                 defaults: {
                     email: gPayload.email,
+                    fullName: gPayload.name,
                     password: "google_password"
                 }
             })
@@ -88,7 +92,10 @@ module.exports = class UserController {
 
             const access_token = signToken(payload);
 
-            res.json({ access_token });
+            res.json({ 
+                access_token,
+                fullName: user.fullName 
+            });
         } catch (error) {
             next(error);
         }

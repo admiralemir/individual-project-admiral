@@ -3,12 +3,12 @@ import { useNavigate } from "react-router"
 
 export default function Home() {
     const navigate = useNavigate()
-    const [userName, setUserName] = useState('User')
+    const [fullName, setfullName] = useState('User')
 
     useEffect(() => {
-        const user = localStorage.getItem('userName')
+        const user = localStorage.getItem('fullName')
         if (user) {
-            setUserName(user)
+            setfullName(user)
         }
     }, [])
 
@@ -41,7 +41,7 @@ export default function Home() {
                             WELCOME
                         </h1>
                         <p className="fs-4 opacity-75">
-                            You signed in as {userName}
+                            You signed in as {fullName}
                         </p>
 
                         <div className="mt-5 opacity-75 scroll-indicator">
@@ -60,10 +60,17 @@ export default function Home() {
                     }}
                 >
                     <div className="container py-5">
-                        <div className="row g-5">
+                        <div className="text-center mb-5">
+                            <h2 className="text-white fw-bold mb-2" style={{ fontSize: '2.5rem', letterSpacing: '2px' }}>
+                                Our Services
+                            </h2>
+                            <div style={{ width: '80px', height: '4px', background: 'linear-gradient(90deg, #00d2ff, #3a7bd5)', margin: '0 auto' }}></div>
+                        </div>
+                        
+                        <div className="row g-4 justify-content-center">
 
                             {/* Borrowing */}
-                            <div className="col-md-6 fade-up">
+                            <div className="col-lg-4 col-md-6 fade-up" style={{ animationDelay: '0.1s' }}>
                                 <div
                                     className="card custom-card"
                                     onClick={() => navigate('/form-create')}
@@ -74,30 +81,19 @@ export default function Home() {
                                         alt="Borrowing Form"
                                     />
                                     <div className="card-overlay">
-                                        <h3>Borrowing Form</h3>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Approval */}
-                            <div className="col-md-6 fade-up">
-                                <div
-                                    className="card custom-card"
-                                    onClick={() => navigate('/submitted')}
-                                >
-                                    <img
-                                        src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800"
-                                        className="card-img"
-                                        alt="Approval"
-                                    />
-                                    <div className="card-overlay">
-                                        <h3>Approval</h3>
+                                        <div className="text-center">
+                                            <div className="icon-wrapper mb-3">
+                                                <i className="bi bi-file-earmark-text" style={{ fontSize: '3rem' }}></i>
+                                            </div>
+                                            <h3>Borrowing Form</h3>
+                                            <p className="small opacity-75 mt-2">Submit your car borrowing request</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Cars */}
-                            <div className="col-md-6 fade-up">
+                            <div className="col-lg-4 col-md-6 fade-up" style={{ animationDelay: '0.2s' }}>
                                 <div
                                     className="card custom-card"
                                     onClick={() => navigate('/cars')}
@@ -108,24 +104,36 @@ export default function Home() {
                                         alt="Car Availability"
                                     />
                                     <div className="card-overlay">
-                                        <h3>Car Availability</h3>
+                                        <div className="text-center">
+                                            <div className="icon-wrapper mb-3">
+                                                <i className="bi bi-car-front" style={{ fontSize: '3rem' }}></i>
+                                            </div>
+                                            <h3>Car Availability</h3>
+                                            <p className="small opacity-75 mt-2">Check available vehicles</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* Loan List */}
-                            <div className="col-md-6 fade-up">
+                            {/* Approval */}
+                            <div className="col-lg-4 col-md-6 fade-up" style={{ animationDelay: '0.3s' }}>
                                 <div
                                     className="card custom-card"
                                     onClick={() => navigate('/submitted')}
                                 >
                                     <img
-                                        src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800"
+                                        src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800"
                                         className="card-img"
-                                        alt="Loan List"
+                                        alt="Approval"
                                     />
                                     <div className="card-overlay">
-                                        <h3>Loan List</h3>
+                                        <div className="text-center">
+                                            <div className="icon-wrapper mb-3">
+                                                <i className="bi bi-check-circle" style={{ fontSize: '3rem' }}></i>
+                                            </div>
+                                            <h3>Approval</h3>
+                                            <p className="small opacity-75 mt-2">Review submission status</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
