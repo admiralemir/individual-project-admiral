@@ -23,7 +23,7 @@ router.post('/login/google', UserController.googleLogin);
 router.use(authentication)
 
 // Cars lists and details
-router.get('/cars', CarController.listCars);
+router.get('/cars', CarController.listCars); // Bisa untuk admin juga
 router.get('/cars/:id/insights', CarController.insightsCars);
 router.get('/cars/:id', CarController.getCarDetails);
 
@@ -37,7 +37,8 @@ router.get('/my-forms', FormController.listUserForms);
 router.post('/forms/create', FormController.createForm);
 
 // Untuk admin
-router.get('/my-forms', FormController.listForms);
+router.get('/forms', FormController.listForms);
+router.put('/forms/:id/status', adminOnlyMiddleware, FormController.updateStatusForm);
 
 router.use(errorHandler)
 
