@@ -88,4 +88,28 @@ module.exports = class FormController{
         }
     }
 
+    // Untuk admin: Edit status form peminjaman (approve/reject)
+    static async updateStatusForm(req, res, next) {
+        try {
+            const formId = req.params.id
+            const { status } = req.body
+            const form = await Form.findByPk(formId)
+
+            if (!form) {
+                throw { name: 'NotFound', message: 'Form not found' }
+            }
+
+            if (status !== 'Approved' && status !== 'Rejected') {
+                throw { name: 'BadRequest', message: 'Invalid status value' }
+            }
+            
+            form.status = status
+            await form.save()
+            res.json(form)
+
+        } catch (error) {
+            next(error)
+        }
+    }
+
 }
